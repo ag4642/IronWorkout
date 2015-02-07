@@ -8,11 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.sql.SQLException;
 
-/**
- * Created by Anirudh on 1/23/2015.
- * Why are the studio tools so irritating
- */
-
 public class ExerciseDatabase {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "exercisedb";
@@ -32,7 +27,7 @@ public class ExerciseDatabase {
     public static final String KEY_WEIGHT = "weight"; //25 pounds
     public static final int INDEX_WEIGHT = 4;
     public static final String[] KEYS_ALL =
-            {KEY_ROWID, KEY_TITLE, KEY_GROUP, KEY_STATE};
+            {KEY_ROWID, KEY_TITLE, KEY_GROUP, KEY_REPS,KEY_WEIGHT};
     private Context mContext;
     private SQLiteDatabase mDatabase;
     private ExerciseDBHelper mHelper;
@@ -77,22 +72,36 @@ public class ExerciseDatabase {
         cursor.moveToFirst();
         return cursor;
     }
-
-    public ContentValues createContentValues(String title, String group, String reps, String weight) {
-    }
-    public int numRows()
+    public int getRows()
     {
         return this.queryAll().getCount();
     }
-    public int numColumns()
+    public int getColumns()
     {
         return this.queryAll().getColumns();
     }
-    public ContentValues createContentValues(String title, String group, int state) {
+    public String[][] getSQLMatrix()
+    {
+        Cursor cursor = this.queryAll();
+        String[][] results = new String[cursor.getCount()][cursor.getColumns()];
+        for(int i=0;i<results.length;i++)
+        {
+            if(cursor.moveToFirst()) {
+                for (int j = 0; j < results[0].length; j++) {
+                    results[i][j] = cursor.getString(j);
+                }
+            }
+            cursor.moveToNext();
+        }
+        return results;
+    }
+
+    public ContentValues createContentValues(String title, String group, String reps, String weight) {
         ContentValues values = new ContentValues();
         values.put(ExerciseDatabase.KEY_TITLE, title);
         values.put(ExerciseDatabase.KEY_GROUP, group);
-        values.put(ExerciseDatabase.KEY_STATE, state);
+        values.put(ExerciseDatabase.KEY_REPS, reps);
+        values.put(ExerciseDatabase.KEY_WEIGHT,weight);
         return values;
     }
 
@@ -103,7 +112,7 @@ public class ExerciseDatabase {
                 ExerciseDatabase.KEY_TITLE  + " text not null, " +
                 ExerciseDatabase.KEY_GROUP  + " text not null, " +
                 ExerciseDatabase.KEY_REPS   + " text not null, " +
-                ExerciseDatabase.KEY_WEIGHT + " text not null, "
+                ExerciseDatabase.KEY_WEIGHT + " text not null, " +
                 ");";
 
         public ExerciseDBHelper(Context context) {
