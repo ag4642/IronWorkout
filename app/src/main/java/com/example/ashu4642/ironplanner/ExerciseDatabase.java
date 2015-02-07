@@ -23,12 +23,14 @@ public class ExerciseDatabase {
 
     public static final String KEY_ROWID = "_id";  // Android requires exactly this key name
     public static final int INDEX_ROWID = 0;
-    public static final String KEY_TITLE = "title";
+    public static final String KEY_TITLE = "title"; //name of exercise "Bicep Curls"
     public static final int INDEX_TITLE = 1;
-    public static final String KEY_GROUP = "group";
+    public static final String KEY_GROUP = "group"; //Muscle group it works out "Arms"
     public static final int INDEX_GROUP = 2;
-    public static final String KEY_STATE = "state";
+    public static final String KEY_REPS = "reps"; //Repititions for each set as a string "10,10,10"
     public static final int INDEX_STATE = 3;
+    public static final String KEY_WEIGHT = "weight"; //25 pounds
+    public static final int INDEX_WEIGHT = 4;
     public static final String[] KEYS_ALL =
             {KEY_ROWID, KEY_TITLE, KEY_GROUP, KEY_STATE};
     private Context mContext;
@@ -66,7 +68,7 @@ public class ExerciseDatabase {
 
     public Cursor queryAll() {
         return mDatabase.query(DATABASE_TABLE, KEYS_ALL, null, null, null, null,
-                KEY_GROUP + " ASC, " + KEY_TITLE + " ASC");
+                KEY_GROUP + " ASC, " + KEY_TITLE + " ASC,");
     }
 
     public Cursor query(long rowId) throws SQLException {
@@ -87,10 +89,11 @@ public class ExerciseDatabase {
     private static class ExerciseDBHelper extends SQLiteOpenHelper {
         private static final String DATABASE_CREATE =
                 "create table " + DATABASE_TABLE + " (" +
-                ExerciseDatabase.KEY_ROWID + " integer primary key autoincrement, " +
-                ExerciseDatabase.KEY_TITLE + " text not null, " +
-                ExerciseDatabase.KEY_GROUP + " integer " +
-                ExerciseDatabase.KEY_STATE + " integer " +
+                ExerciseDatabase.KEY_ROWID  + " integer primary key autoincrement, " +
+                ExerciseDatabase.KEY_TITLE  + " text not null, " +
+                ExerciseDatabase.KEY_GROUP  + " text not null, " +
+                ExerciseDatabase.KEY_REPS   + " text not null, " +
+                ExerciseDatabase.KEY_WEIGHT + " text not null, "
                 ");";
 
         public ExerciseDBHelper(Context context) {
@@ -104,7 +107,7 @@ public class ExerciseDatabase {
 
         @Override
         public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
-            //nothing for now
+            //
         }
     }
 }
