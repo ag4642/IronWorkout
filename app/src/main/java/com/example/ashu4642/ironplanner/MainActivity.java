@@ -42,14 +42,13 @@ public class MainActivity extends Activity
 
         mNavigationDrawerFragment = (com.example.ashu4642.ironplanner.NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(com.example.ashu4642.ironplanner.R.id.navigation_drawer);
-        //mTitle = getTitle();
+        mTitle = getTitle();
         // Ani 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 com.example.ashu4642.ironplanner.R.id.navigation_drawer,
                 (DrawerLayout) findViewById(com.example.ashu4642.ironplanner.R.id.drawer_layout));
-        ActionBar actionBar = getActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(0xff6479a8));
+        getActionBar().setBackgroundDrawable(new ColorDrawable(0xff6479a8));
 
     }
 
@@ -58,11 +57,11 @@ public class MainActivity extends Activity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         Fragment fragment = PlaceholderFragment.newInstance(position+1);
-        /* if(position == 1) {
-            CalendarListFragment elfrag = (CalendarListFragment)fragment;
-            elfrag.setUp(R.id.container);
-            fragment = elfrag;
-        } */
+        if(position == 0) {
+            fragment = new MainFragment();
+        } else {
+            fragment = PlaceholderFragment.newInstance(position+1);
+        }
         fragmentManager.beginTransaction()
                 .replace(com.example.ashu4642.ironplanner.R.id.container, fragment)
                 .commit();
@@ -132,7 +131,6 @@ public class MainActivity extends Activity
         private static final String ARG_SECTION_NUMBER = "section_number";
         public static View mView = null;
         public static int whichScreen = 0;
-        public static GregorianCalendar c = new GregorianCalendar();
         public static int month = c.get(Calendar.MONTH);
         public static int day = c.get(Calendar.DAY_OF_WEEK);
         public static int date = c.get(Calendar.DATE);
@@ -144,8 +142,6 @@ public class MainActivity extends Activity
             Fragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            //if(sectionNumber == 2)
-            //    fragment = new CalendarListFragment();
             fragment.setArguments(args);
             return fragment;
         }
@@ -157,7 +153,7 @@ public class MainActivity extends Activity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(com.example.ashu4642.ironplanner.R.layout.fragment_main, container, false);
-            int j = getArguments().getInt(ARG_SECTION_NUMBER);
+            /*int j = getArguments().getInt(ARG_SECTION_NUMBER);
             whichScreen = j;
             switch (j) {
                 case 1:
@@ -176,88 +172,8 @@ public class MainActivity extends Activity
                 case :
                     mTitle = getString(R.string.title_section4);
                     break;*/
-            }
+            }*/
             return rootView;
-        }
-
-        public void updateMain() {
-            TextView tx = (TextView)(mView.findViewById(com.example.ashu4642.ironplanner.R.id.editText12));
-            String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
-                    "October", "November", "December"};
-            String s = months[c.get(Calendar.MONTH)] + " ";
-            s += c.get(Calendar.DATE) +", " + c.get(Calendar.YEAR);
-            tx.setText(s);
-            final LinearLayout square4 = (LinearLayout)(mView.findViewById(com.example.ashu4642.ironplanner.R.id.square4));
-            square4.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    /*
-                    SWITCH FRAGMENTS AND
-                     */
-                }
-            });
-        }
-
-        public void updateCalendar() {
-            updateCalendarHelper();
-            ListView lv = (ListView)(mView.findViewById(com.example.ashu4642.ironplanner.R.id.listView));
-            lv.setAdapter(new ArrayAdapter<String>(
-                getActivity().getActionBar().getThemedContext(),
-                com.example.ashu4642.ironplanner.R.layout.row2,
-                com.example.ashu4642.ironplanner.R.id.rowtext,
-                //R.layout.exercise_list_item,
-                //R.id.exercise_text,
-                new String[]{
-                        "Exercise 1",
-                        "Exercise 2",
-                        "Exercise 3",
-                        "Exercise 4"
-                        /*getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
-                        getString(R.string.title_section4) */
-                }
-            ));
-            TextView buttonL = (TextView)(mView.findViewById(com.example.ashu4642.ironplanner.R.id.left));
-            TextView buttonR = (TextView)(mView.findViewById(com.example.ashu4642.ironplanner.R.id.right));
-            buttonL.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    //startDetail(0, true);  // true = create new
-                    date -= 1;
-                    if(date <= 0) {
-                        date = 31;
-                        month--;
-                        if(month == -1)
-                            month = 11;
-                    }
-                    day -= 1;
-                    if(day == 0)
-                        day = 7;
-                    updateCalendarHelper();
-                }
-            });
-            buttonR.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    //startDetail(0, true);  // true = create new
-                    date += 1;
-                    if(date > 31) {
-                        date = 1;
-                        month++;
-                    }
-                    day += 1;
-                    if(day == 8)
-                        day = 1;
-                    updateCalendarHelper();
-                }
-            });
-        }
-
-        public void updateCalendarHelper() {
-            TextView tx = (TextView)(mView.findViewById(com.example.ashu4642.ironplanner.R.id.date));
-            Calendar c = new GregorianCalendar();
-            String[] days = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-            String s = days[day-1] + " ("; //String s = days[c.get(Calendar.DAY_OF_WEEK)-1] + " (";
-            s += (month+1) + "/" + date + ")"; //s += (c.get(Calendar.MONTH)+1) + "/" + (c.get(Calendar.DATE)) + ")";
-            tx.setText(s);
         }
 
         @Override
