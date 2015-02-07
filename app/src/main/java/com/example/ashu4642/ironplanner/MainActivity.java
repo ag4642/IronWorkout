@@ -38,6 +38,7 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.ashu4642.ironplanner.R.layout.activity_main);
+        System.out.println("Amir Rox");
 
         mNavigationDrawerFragment = (com.example.ashu4642.ironplanner.NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(com.example.ashu4642.ironplanner.R.id.navigation_drawer);
