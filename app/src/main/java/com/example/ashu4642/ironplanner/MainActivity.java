@@ -43,7 +43,7 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment = (com.example.ashu4642.ironplanner.NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(com.example.ashu4642.ironplanner.R.id.navigation_drawer);
         //mTitle = getTitle();
-
+        // Ani 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 com.example.ashu4642.ironplanner.R.id.navigation_drawer,
