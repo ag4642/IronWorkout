@@ -52,13 +52,7 @@ public class ExerciseDatabase {
         mDatabase = null;
     }
 
-    public long createRow(String id, String title, String group, String reps, String weight) {
-        ContentValues values = new ContentValues(6);
-        values.put(KEY_ID, id);
-        values.put(KEY_TITLE,title);
-        values.put(KEY_GROUP,group);
-        values.put(KEY_REPS, reps);
-        values.put (KEY_WEIGHT,weight);
+    public long createRow(ContentValues values) {
         return mDatabase.insert(DATABASE_TABLE, null, values);
     }
 
@@ -83,20 +77,8 @@ public class ExerciseDatabase {
         cursor.moveToFirst();
         return cursor;
     }
-    public String[][] getSQLMatrix()
-    {
-        Cursor cursor = this.queryAll();
-        String[][] results = new String[cursor.getCount()][cursor.getColumns()];
-        for(int i = 0;i<cursor.getCount();i++)
-        {
-            for (int j = 0; j < cursor.getColumns(); j++) {
-                if (cursor.moveToFront()) {
-                    results[i][j] = cursor.getString(j);
-                }
-                cursor.moveToNext();
-            }
-        }
 
+    public ContentValues createContentValues(String title, String group, String reps, String weight) {
     }
     public int numRows()
     {
