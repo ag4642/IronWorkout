@@ -32,7 +32,7 @@ public class ExerciseDatabase {
     public static final String KEY_WEIGHT = "weight"; //25 pounds
     public static final int INDEX_WEIGHT = 4;
     public static final String[] KEYS_ALL =
-            {KEY_ROWID, KEY_TITLE, KEY_GROUP, KEY_STATE};
+            {KEY_ROWID, KEY_TITLE, KEY_GROUP, KEY_REPS,KEY_WEIGHT};
     private Context mContext;
     private SQLiteDatabase mDatabase;
     private ExerciseDBHelper mHelper;
@@ -78,11 +78,12 @@ public class ExerciseDatabase {
         return cursor;
     }
 
-    public ContentValues createContentValues(String title, String group, int state) {
+    public ContentValues createContentValues(String title, String group, String reps, String weight) {
         ContentValues values = new ContentValues();
         values.put(ExerciseDatabase.KEY_TITLE, title);
         values.put(ExerciseDatabase.KEY_GROUP, group);
-        values.put(ExerciseDatabase.KEY_STATE, state);
+        values.put(ExerciseDatabase.KEY_REPS, reps);
+        values.put(ExerciseDatabase.KEY_WEIGHT, weight);
         return values;
     }
 
@@ -93,7 +94,7 @@ public class ExerciseDatabase {
                 ExerciseDatabase.KEY_TITLE  + " text not null, " +
                 ExerciseDatabase.KEY_GROUP  + " text not null, " +
                 ExerciseDatabase.KEY_REPS   + " text not null, " +
-                ExerciseDatabase.KEY_WEIGHT + " text not null, "
+                ExerciseDatabase.KEY_WEIGHT + " text not null, " +
                 ");";
 
         public ExerciseDBHelper(Context context) {
