@@ -78,12 +78,12 @@ public class ExerciseDatabase {
     }
     public int getColumns()
     {
-        return this.queryAll().getColumns();
+        return this.queryAll().getColumnCount();
     }
     public String[][] getSQLMatrix()
     {
         Cursor cursor = this.queryAll();
-        String[][] results = new String[cursor.getCount()][cursor.getColumns()];
+        String[][] results = new String[cursor.getCount()][cursor.getColumnCount()];
         for(int i=0;i<results.length;i++)
         {
             if(cursor.moveToFirst()) {

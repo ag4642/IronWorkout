@@ -12,13 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 
 public class MainActivity extends Activity
@@ -38,7 +31,6 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.ashu4642.ironplanner.R.layout.activity_main);
-        System.out.println("Amir Rox");
 
         mNavigationDrawerFragment = (com.example.ashu4642.ironplanner.NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(com.example.ashu4642.ironplanner.R.id.navigation_drawer);
@@ -131,9 +123,6 @@ public class MainActivity extends Activity
         private static final String ARG_SECTION_NUMBER = "section_number";
         public static View mView = null;
         public static int whichScreen = 0;
-        public static int month = c.get(Calendar.MONTH);
-        public static int day = c.get(Calendar.DAY_OF_WEEK);
-        public static int date = c.get(Calendar.DATE);
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -171,22 +160,14 @@ public class MainActivity extends Activity
                     break;
                 case :
                     mTitle = getString(R.string.title_section4);
-                    break;*/
-            }*/
+                    break;
+            } */
             return rootView;
         }
 
         @Override
         public void onResume() {
             super.onResume();
-            switch(whichScreen) {
-                case 1:
-                    updateMain();
-                    break;
-                case 2:
-                    updateCalendar();
-                    break;
-            }
         }
 
         @Override
