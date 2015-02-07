@@ -1,4 +1,4 @@
-package com.example.ashu4642.ironplanner;
+package com.example.ashu4642.ironworkout;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
