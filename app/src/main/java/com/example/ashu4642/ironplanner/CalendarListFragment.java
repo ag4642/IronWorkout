@@ -35,24 +35,27 @@ public class CalendarListFragment extends ListFragment implements LoaderManager.
 
     }
 
+    public void setUp(ExerciseDatabase db) {
+        mDB = db;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)  {
         mView = (View)inflater.inflate(R.layout.fragment_calendar, container, false);
-        mListView = (ListView)(mView.findViewById(R.id.listView));
-        mDB = new ExerciseDatabase(mActivity);
-        try {
-            mDB.open();
-        } catch(Exception e) {
+        mActivity = getActivity();
+        mListView = (ListView)(mView.findViewById(android.R.id.list));
+        if(mDB == null)
             System.exit(0);
-        }
+        mDB.createRow(mDB.createContentValues("Amir", "Refai", "2","Ashu"));
         Cursor cursor = mDB.queryAll();
+        getActivity().startManagingCursor(cursor);
         String[] from = new String[] {ExerciseDatabase.KEY_TITLE, ExerciseDatabase.KEY_GROUP};
         int[] to = new int[] {R.id.nameText, R.id.groupText};
         mCursorAdapter = new SimpleCursorAdapter(mActivity, R.layout.row, cursor, from, to, 0);
         setListAdapter(mCursorAdapter);
-        //getLoaderManager().initLoader(0, null, this);
         return mView;
     }
+
 
     public void setUp(int fragmentId) {
         mFragmentContainerView = getActivity().findViewById(fragmentId);

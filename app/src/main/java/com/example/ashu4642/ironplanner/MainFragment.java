@@ -2,7 +2,6 @@ package com.example.ashu4642.ironplanner;
 
 import android.app.Activity;
 import android.app.ListFragment;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -43,7 +41,7 @@ public class MainFragment extends ListFragment {
         mListView = (ListView)(mView.findViewById(android.R.id.list));
         mCursorAdapter = new ArrayAdapter<String>(
                 getActivity().getActionBar().getThemedContext(),
-                R.layout.row,
+                R.layout.row2,
                 R.id.mothafuckajones,
                 new String[] {
                         "Exercise 1",

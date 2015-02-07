@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -26,12 +25,21 @@ public class MainActivity extends Activity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    ExerciseDatabase mDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.ashu4642.ironplanner.R.layout.activity_main);
-
+        mDB = new ExerciseDatabase(this);
+        try
+        {
+           mDB.open();
+        }
+        catch(Exception e)
+        {
+            System.exit(0);
+        }
         mNavigationDrawerFragment = (com.example.ashu4642.ironplanner.NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(com.example.ashu4642.ironplanner.R.id.navigation_drawer);
         mTitle = getTitle();
@@ -40,7 +48,7 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 com.example.ashu4642.ironplanner.R.id.navigation_drawer,
                 (DrawerLayout) findViewById(com.example.ashu4642.ironplanner.R.id.drawer_layout));
-        getActionBar().setBackgroundDrawable(new ColorDrawable(0xff6479a8));
+        //getActionBar().setBackgroundDrawable(new ColorDrawable(0xff6479a8));
 
     }
 
@@ -48,11 +56,14 @@ public class MainActivity extends Activity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
-        Fragment fragment = PlaceholderFragment.newInstance(position+1);
+        Fragment fragment;
         if(position == 0) {
             fragment = new MainFragment();
         } else {
-            fragment = PlaceholderFragment.newInstance(position+1);
+            fragment = new CalendarListFragment();
+            CalendarListFragment tFragment = (CalendarListFragment)fragment;
+            tFragment.setUp(mDB);
+            fragment = tFragment;
         }
         fragmentManager.beginTransaction()
                 .replace(com.example.ashu4642.ironplanner.R.id.container, fragment)
