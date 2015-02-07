@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlaceholderFragment"
+    android:orientation="vertical"
+    android:background="#ff262626">
+
+    <RelativeLayout android:id="@+id/section_label" android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff7aa57c"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            android:gravity="center"
+            android:textSize="21sp"
+            android:textColor="#ffffffff"
+            android:text="Wednesday (12/22)"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="46dp"
+            android:id="@+id/left"
+            android:textSize="40sp"
+            android:textColor="#ffffffff"
+            android:text="&lt;"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector1" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="46dp"
+            android:id="@+id/right"
+            android:textSize="40sp"
+            android:textColor="#ffffffff"
+            android:text="&gt;"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector1"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView" />
+
+
+</LinearLayout>

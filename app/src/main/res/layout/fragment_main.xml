@@ -1,0 +1,162 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff262626"
+    tools:context=".MainActivity$PlaceholderFragment">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="159dp"
+                android:layout_height="159dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:id="@+id/square1"
+                android:background="#cc90d150"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Today"
+                    android:singleLine="true"
+                    android:paddingBottom="10dp"
+                    android:textColor="#ffffffff" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText12"
+                    android:textSize="15sp"
+                    android:paddingBottom="1dp"
+                    android:textColor="#ffffffff"
+                    android:text=""/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText13"
+                    android:textSize="15sp"
+                    android:text="____ Day"
+                    android:textColor="#ffffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="159dp"
+                android:layout_height="159dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:id="@+id/square2"
+                android:background="#ff7aa57c"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/square1"
+                android:layout_marginLeft="14dp">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Attendance"
+                    android:paddingBottom="10dp"
+                    android:textColor="#ffffffff" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText22"
+                    android:textSize="15sp"
+                    android:paddingBottom="1dp"
+                    android:textColor="#ffffffff"
+                    android:text="__ Attended"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText23"
+                    android:textSize="15sp"
+                    android:text="__ Missed"
+                    android:textColor="#ffffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="159dp"
+                android:layout_height="159dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:orientation="vertical"
+                android:id="@+id/square3"
+                android:background="#ff6479a8"
+                android:layout_below="@+id/square1"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="14dp">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Suggestion"
+                    android:paddingBottom="10dp"
+                    android:textColor="#ffffffff" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText32"
+                    android:textSize="15sp"
+                    android:paddingBottom="1dp"
+                    android:textColor="#ffffffff"
+                    android:text="__ Day"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="159dp"
+                android:layout_height="159dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:orientation="vertical"
+                android:id="@+id/square4"
+                android:background="#cc4e4dd4"
+                android:layout_below="@+id/square2"
+                android:layout_toRightOf="@+id/square3"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="14dp"
+                android:clickable="false">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Start Workout"
+                    android:paddingBottom="10dp"
+                    android:textColor="#ffffffff" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
