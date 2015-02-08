@@ -3,6 +3,14 @@
 
     <drawable name="color_three">#ff6479a8</drawable>
     <drawable name="color_three_faded">#ff7f97d2</drawable>
+    <drawable name="color_four">#ff27ae60</drawable>
+    <drawable name="color_four_faded">#ff2fd475</drawable>
+    <drawable name="color_five">#ff16a085</drawable>
+    <drawable name="color_five_faded">#ff1bc7a5</drawable>
+    <drawable name="color_six">#ff2980b9</drawable>
+    <drawable name="color_six_faded">#ff329ce1</drawable>
+    <drawable name="color_seven">#ff5744ad</drawable>
+    <drawable name="color_seven_faded">#ff7058df</drawable>
     <drawable name="color_two">#001111</drawable>
 
 </resources>

@@ -3,20 +3,13 @@
     android:layout_height="wrap_content" android:layout_width="fill_parent">
 
     <TextView
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/nameText"
-        android:textSize="25dp"
+        android:textSize="20sp"
+        android:textColor="#ffffffff"
         android:layout_marginTop="4dp"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content" >
     </TextView>
 
-    <TextView android:text="blah blah"
-        android:layout_height="wrap_content"
-        android:id="@+id/groupText"
-        android:textSize="25dp"
-        android:layout_gravity="right"
-        android:layout_width="wrap_content"
-        android:layout_alignParentRight="true">
-    </TextView>
 </RelativeLayout>

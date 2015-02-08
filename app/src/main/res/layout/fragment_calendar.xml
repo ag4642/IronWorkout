@@ -7,7 +7,7 @@
 
     <RelativeLayout android:id="@+id/section_label" android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ff7aa57c"
+        android:background="#ff27ae60"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:clickable="true">
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/date"
             android:gravity="center"
-            android:textSize="21sp"
+            android:textSize="18sp"
             android:textColor="#ffffffff"
             android:text="Wednesday (12/22)"
             android:layout_centerHorizontal="true"
@@ -31,10 +31,9 @@
             android:textColor="#ffffffff"
             android:text="&lt;"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="35dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="5dp"
             android:gravity="center_horizontal"
             android:clickable="true"
             android:focusable="true"
@@ -48,10 +47,25 @@
             android:textColor="#ffffffff"
             android:text="&gt;"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="35dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
             android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector1"/>
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="46dp"
+            android:id="@+id/plus"
+            android:textSize="30sp"
+            android:textColor="#ffffffff"
+            android:text="+"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
             android:clickable="true"
             android:focusable="true"
             android:background="@drawable/selector1"/>
@@ -61,6 +75,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="15dp"
         android:id="@android:id/list" />
 
 

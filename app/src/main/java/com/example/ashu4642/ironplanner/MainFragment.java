@@ -2,6 +2,7 @@ package com.example.ashu4642.ironplanner;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import com.firebase.client.Firebase;
+import com.firebase.client.Query;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -40,13 +45,13 @@ public class MainFragment extends ListFragment {
         mView = (View)inflater.inflate(R.layout.fragment_main, container, false);
         mListView = (ListView)(mView.findViewById(android.R.id.list));
         mCursorAdapter = new ArrayAdapter<String>(
-                getActivity().getActionBar().getThemedContext(),
-                R.layout.row2,
-                R.id.mothafuckajones,
-                new String[] {
-                        "Exercise 1",
-                        "Exercise 2"
-                }
+            getActivity().getActionBar().getThemedContext(),
+            R.layout.row2,
+            R.id.mothafuckajones,
+            new String[] {
+                "Exercise 1",
+                "Exercise 2"
+            }
         );
         setListAdapter(mCursorAdapter);
         TextView tx = (TextView)(mView.findViewById(R.id.editText12));
@@ -70,5 +75,6 @@ public class MainFragment extends ListFragment {
         mFragmentContainerView = getActivity().findViewById(fragmentId);
         mActivity = getActivity();
     }
+
 
 }
